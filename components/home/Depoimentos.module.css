@@ -1,0 +1,118 @@
+.section {
+  padding: 0 var(--section-padding-x) var(--section-padding-y-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.label {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: clamp(32px, 5vh, 52px);
+  font-weight: 400;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+}
+
+.featured {
+  grid-column: span 7;
+  margin: 0;
+  background: var(--ink);
+  color: var(--bg-primary);
+  border-radius: var(--radius);
+  padding: clamp(30px, 3.2vw, 52px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 34px;
+  min-height: clamp(300px, 40vh, 380px);
+}
+
+.featuredQuote {
+  margin: 0 0 24px;
+  font-family: var(--font-petrona), serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(26px, 3.2vw, 44px);
+  line-height: 1.24;
+  letter-spacing: -0.015em;
+}
+
+.featuredBy {
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--on-dark-60);
+}
+
+.photoCell {
+  grid-column: span 5;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: clamp(300px, 40vh, 380px);
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.testimonial {
+  grid-column: span 4;
+  margin: 0;
+  border-radius: var(--radius);
+  padding: clamp(24px, 2.4vw, 34px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 26px;
+  min-height: 270px;
+}
+
+.testimonialOutline {
+  background: #fff;
+  border: 1px solid var(--sand);
+}
+
+.testimonialSand {
+  background: var(--sand);
+}
+
+.testimonialQuote {
+  margin: 0;
+  font-family: var(--font-petrona), serif;
+  font-weight: 300;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.testimonialSand .testimonialQuote {
+  font-size: clamp(19px, 1.8vw, 25px);
+  line-height: 1.42;
+}
+
+.testimonialBy {
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .featured,
+  .photoCell,
+  .testimonial {
+    grid-column: 1 / -1;
+  }
+}

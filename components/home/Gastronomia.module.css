@@ -1,0 +1,117 @@
+.section {
+  background: var(--ink);
+  color: var(--bg-primary);
+  padding: var(--section-padding-y-lg) 0;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+.label {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--on-dark-55);
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.title {
+  font-family: var(--font-petrona), serif;
+  font-weight: 300;
+  font-size: clamp(30px, 3.4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  margin: 0 0 28px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: clamp(15px, 1.15vw, 17.5px);
+  line-height: 1.75;
+  color: rgba(251, 249, 245, 0.78);
+  max-width: 520px;
+}
+
+.copy p {
+  margin: 0;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(251, 249, 245, 0.06);
+  border: 1px solid var(--border-on-dark);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.featureTitle {
+  font-family: var(--font-petrona), serif;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.featureDesc {
+  font-size: 13px;
+  color: rgba(251, 249, 245, 0.58);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--grid-gap);
+}
+
+.photoCell {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.photoWide {
+  grid-column: span 2;
+  height: clamp(200px, 30vh, 320px);
+}
+
+.photoCell:not(.photoWide) {
+  height: clamp(150px, 22vh, 230px);
+}
+
+.photo {
+  object-fit: cover;
+  transition: transform 1.4s var(--ease-standard);
+}
+
+.photoCell:hover .photo {
+  transform: scale(1.05);
+}

@@ -1,0 +1,89 @@
+.section {
+  position: relative;
+  min-height: clamp(460px, 72vh, 680px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(26, 22, 17, 0.78) 0%, rgba(26, 22, 17, 0.34) 62%, rgba(26, 22, 17, 0.18) 100%);
+}
+
+.inner {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+  width: 100%;
+}
+
+.content {
+  max-width: 560px;
+  color: var(--bg-primary);
+}
+
+.title {
+  font-family: var(--font-petrona), serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4.2vw, 60px);
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+  margin: 0 0 22px;
+}
+
+.body {
+  margin: 0 0 38px;
+  font-size: clamp(15px, 1.2vw, 17.5px);
+  line-height: 1.7;
+  color: var(--on-dark-82);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primaryCta {
+  border: 0;
+  background: var(--bg-primary);
+  color: var(--ink);
+  padding: 17px 38px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.4s var(--ease-standard), background 0.4s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  background: var(--sand);
+}
+
+.whatsapp {
+  border: 1px solid var(--on-dark-42);
+  color: var(--bg-primary);
+  padding: 17px 30px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.4s ease;
+}
+
+.whatsapp:hover {
+  background: rgba(251, 249, 245, 0.14);
+}

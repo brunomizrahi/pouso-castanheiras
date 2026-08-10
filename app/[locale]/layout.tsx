@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { Petrona, Jost } from 'next/font/google';
 import { routing } from '@/i18n/routing';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import '../globals.css';
 
 const petrona = Petrona({
@@ -41,7 +43,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={`${petrona.variable} ${jost.variable}`}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
