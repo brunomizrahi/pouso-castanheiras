@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trajeto — Pouso das Castanheiras</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:wght@300;400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; height: 100%; background: #E9E5DC; font-family: Jost, system-ui, sans-serif; }
+  #map { position: absolute; inset: 0; background: #E9E5DC; }
+  .leaflet-tile-pane { filter: saturate(.42) brightness(1.06) contrast(.9) sepia(.16); }
+  .leaflet-container { background: #E9E5DC; font-family: Jost, sans-serif; }
+  .leaflet-control-attribution { font-size: 9px !important; background: rgba(251,249,245,.82) !important; color: #6B5A4C !important; font-family: Jost, sans-serif; }
+  .leaflet-control-attribution a { color: #5F6245 !important; }
+  .leaflet-bar a { background: #FBF9F5; color: #2A1C12; border-bottom-color: #E3DFD6; }
+  .leaflet-bar a:hover { background: #E3DFD6; }
+  .pin { display: grid; place-items: center; }
+  .pin i { display: block; width: 11px; height: 11px; border-radius: 999px; background: #5F6245; box-shadow: 0 0 0 4px rgba(95,98,69,.22), 0 1px 4px rgba(20,16,12,.35); }
+  .pin.dest i { width: 15px; height: 15px; background: #2A1C12; box-shadow: 0 0 0 6px rgba(42,28,18,.16), 0 1px 6px rgba(20,16,12,.4); }
+  .lbl { font-size: 10.5px; letter-spacing: .15em; text-transform: uppercase; color: #2A1C12; background: rgba(251,249,245,.9);
+         padding: 4px 9px; border-radius: 2px; white-space: nowrap; font-weight: 400; backdrop-filter: blur(3px); }
+  .lbl b { font-family: Petrona, serif; font-weight: 400; font-size: 12.5px; letter-spacing: .06em; text-transform: none; display: block; }
+  .seg { display: flex; align-items: center; gap: 7px; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: #2A1C12;
+         background: rgba(251,249,245,.93); padding: 5px 10px 5px 7px; border-radius: 999px; white-space: nowrap; backdrop-filter: blur(3px);
+         box-shadow: 0 1px 6px rgba(20,16,12,.14); }
+  .seg svg { display: block; flex-shrink: 0; }
+  .seg.air { color: #43607A; }
+  .seg.boat { color: #4C5138; }
+  .leaflet-tooltip { border: 0; box-shadow: none; background: none; padding: 0; }
+  .leaflet-tooltip::before { display: none; }
+  #note { position: absolute; left: 14px; bottom: 26px; z-index: 500; font-size: 9.5px; letter-spacing: .12em;
+          text-transform: uppercase; color: #6B5A4C; background: rgba(251,249,245,.88); padding: 6px 10px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="note">Trajeto indicativo</div>
+<script>
+  var map = L.map('map', { zoomControl: true, scrollWheelZoom: false, attributionControl: true });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors', maxZoom: 17
+  }).addTo(map);
+
+  var MANAUS = [-3.0386, -60.0497];
+  var AIRAO   = [-2.6303, -60.9436];
+  var POUSO   = [-2.62331, -60.98139];
+
+  // Indicative road corridor: BR-174 north from Manaus, then AM-352 west to Novo Airão.
+  var road = [MANAUS, [-2.9300, -60.0250], [-2.7300, -60.0180], [-2.5850, -60.0600],
+              [-2.5500, -60.2100], [-2.5750, -60.4300], [-2.6050, -60.6600],
+              [-2.6180, -60.8300], AIRAO];
+
+  L.polyline(road, { color: '#2A1C12', weight: 1.6, opacity: .5, dashArray: '1 7', lineCap: 'round' }).addTo(map);
+  L.polyline([AIRAO, POUSO], { color: '#5F6245', weight: 2.4, opacity: .9 }).addTo(map);
+  L.polyline([MANAUS, POUSO], { color: '#7C93A6', weight: 1.2, opacity: .55, dashArray: '6 8' }).addTo(map);
+
+  function pin(latlng, html, dest, dir, off) {
+    L.marker(latlng, {
+      icon: L.divIcon({ className: 'pin' + (dest ? ' dest' : ''), html: '<i></i>', iconSize: [16, 16], iconAnchor: [8, 8] })
+    }).addTo(map).bindTooltip(html, { permanent: true, direction: dir, offset: off, className: 'lbl' });
+  }
+
+  function seg(latlng, cls, icon, text) {
+    L.marker(latlng, { icon: L.divIcon({ className: '', html: '', iconSize: [0, 0] }), interactive: false })
+      .addTo(map)
+      .bindTooltip('<span class="seg ' + cls + '">' + icon + text + '</span>',
+                   { permanent: true, direction: 'center', className: 'lbl' });
+  }
+  var CAR = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16v-3l2-5a2 2 0 0 1 1.9-1.3h10.2A2 2 0 0 1 19 8l2 5v3"/><path d="M3 16h18"/><circle cx="7" cy="16.5" r="1.6"/><circle cx="17" cy="16.5" r="1.6"/></svg>';
+  var PLANE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-6-6 20-3.5-8.5L2 12Z"/><path d="M3 20h18"/></svg>';
+  var BOAT = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h18l-2.5 5H5.5L3 15Z"/><path d="M6 15V9h12v6"/><path d="M12 9V4"/></svg>';
+
+  // The boat leg is only ~4 km: at corridor zoom its chip cannot clear the Novo Airão
+  // and Pouso pins, so it lives in the legend under the map instead.
+  seg([-2.5480, -60.2400], 'road', CAR, '2h45 · Táxi ou van');
+  seg([-2.8600, -60.5600], 'air', PLANE, '40 min · Hidroavião');
+
+  pin(MANAUS, '<b>Manaus</b>Aeroporto Eduardo Gomes', false, 'left', [-12, 0]);
+  pin(AIRAO,  '<b>Novo Airão</b>Porto', false, 'bottom', [6, 16]);
+  pin(POUSO,  '<b>Pouso das Castanheiras</b>2°37\'23.9"S 60°58\'53.0"W', true, 'left', [-18, -6]);
+
+  map.fitBounds(L.latLngBounds(road.concat([POUSO])), { paddingTopLeft: [190, 60], paddingBottomRight: [80, 70] });
+</script>
+</body>
+</html>
