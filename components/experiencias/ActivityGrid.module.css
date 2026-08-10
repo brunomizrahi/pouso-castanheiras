@@ -1,0 +1,164 @@
+.section {
+  padding: 0 var(--section-padding-x) clamp(72px, 11vh, 130px);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.groupHeaderSpaced {
+  margin-top: clamp(48px, 7vh, 80px);
+}
+
+.groupLabel {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--olive);
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.groupLine {
+  flex: 1;
+  height: 1px;
+  background: var(--sand);
+}
+
+/* "Na propriedade" featured grid — dc.html 650-676 */
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+}
+
+.featuredCard {
+  grid-column: span 6;
+  text-align: left;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  min-height: clamp(300px, 42vh, 420px);
+  display: flex;
+  align-items: flex-end;
+}
+
+.featuredCardWide {
+  grid-column: span 12;
+  min-height: clamp(280px, 40vh, 400px);
+}
+
+.featuredImage {
+  object-fit: cover;
+  transition: transform 1.5s var(--ease-standard);
+}
+
+.featuredCard:hover .featuredImage {
+  transform: scale(1.06);
+}
+
+.featuredCardWide:hover .featuredImage {
+  transform: scale(1.04);
+}
+
+.featuredScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 22, 17, 0.82), rgba(26, 22, 17, 0) 62%);
+}
+
+.featuredCaption {
+  position: relative;
+  padding: clamp(22px, 2.4vw, 34px);
+  color: var(--bg-primary);
+  display: block;
+}
+
+.featuredCardWide .featuredCaption {
+  max-width: 640px;
+}
+
+.meta {
+  display: block;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  opacity: 0.72;
+  margin-bottom: 9px;
+}
+
+.featuredTitle {
+  display: block;
+  font-family: var(--font-petrona), serif;
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 300;
+  line-height: 1.16;
+}
+
+/* "Anavilhanas e Novo Airão" grid — dc.html 682-725 */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--grid-gap);
+}
+
+.card {
+  text-align: left;
+  border: 1px solid var(--sand);
+  padding: 0;
+  background: var(--bg-primary);
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.4s ease, transform 0.5s var(--ease-standard);
+}
+
+.card:hover {
+  border-color: var(--olive);
+  transform: translateY(-3px);
+}
+
+.cardImageWrap {
+  position: relative;
+  height: 210px;
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.cardBody {
+  display: block;
+  padding: 22px 22px 26px;
+}
+
+.cardMeta {
+  display: block;
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 9px;
+}
+
+.cardTitle {
+  display: block;
+  font-family: var(--font-petrona), serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.25;
+}
