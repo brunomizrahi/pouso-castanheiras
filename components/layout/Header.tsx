@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { computeHeaderAppearance } from '@/lib/headerAppearance';
+import { MobileMenu } from './MobileMenu';
 import styles from './Header.module.css';
 
 const NAV_ITEMS = [
@@ -22,6 +23,7 @@ export function Header() {
   const [appearance, setAppearance] = useState(() =>
     computeHeaderAppearance({ scrollY: 0, heroBottom: null })
   );
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     function onScroll() {
@@ -35,42 +37,55 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header
-      id="pc-header"
-      className={styles.header}
-      style={{
-        background: appearance.background,
-        backdropFilter: appearance.backdropFilter,
-        boxShadow: appearance.boxShadow,
-        color: appearance.ink,
-      }}
-    >
-      <Link href="/" className={styles.brand}>
-        Pouso das Castanheiras
-      </Link>
-      <nav id="pc-nav" className={styles.nav}>
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={styles.navLink}
-            style={{
-              opacity: pathname === item.href ? 1 : 0.6,
-              borderBottom: pathname === item.href ? '1px solid currentColor' : '1px solid transparent',
-            }}
-          >
-            {t(`nav.${item.key}`)}
+    <>
+      <header
+        id="pc-header"
+        className={styles.header}
+        style={{
+          background: appearance.background,
+          backdropFilter: appearance.backdropFilter,
+          boxShadow: appearance.boxShadow,
+          color: appearance.ink,
+        }}
+      >
+        <Link href="/" className={styles.brand}>
+          Pouso das Castanheiras
+        </Link>
+        <nav id="pc-nav" className={styles.nav}>
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={styles.navLink}
+              style={{
+                opacity: pathname === item.href ? 1 : 0.6,
+                borderBottom: pathname === item.href ? '1px solid currentColor' : '1px solid transparent',
+              }}
+            >
+              {t(`nav.${item.key}`)}
+            </Link>
+          ))}
+        </nav>
+        <div className={styles.actions}>
+          <Link href={locale === 'pt' ? '/en' : '/'} locale={locale === 'pt' ? 'en' : 'pt'}>
+            {locale === 'pt' ? 'EN' : 'PT'}
           </Link>
-        ))}
-      </nav>
-      <div className={styles.actions}>
-        <Link href={locale === 'pt' ? '/en' : '/'} locale={locale === 'pt' ? 'en' : 'pt'}>
-          {locale === 'pt' ? 'EN' : 'PT'}
-        </Link>
-        <Link href="/reserva" className={styles.cta}>
-          {t('header.cta')}
-        </Link>
-      </div>
-    </header>
+          <Link href="/reserva" className={styles.cta}>
+            {t('header.cta')}
+          </Link>
+          <button
+            type="button"
+            id="pc-burger"
+            className={styles.burger}
+            aria-label="Abrir menu"
+            onClick={() => setMenuOpen(true)}
+          >
+            <span />
+            <span />
+          </button>
+        </div>
+      </header>
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+    </>
   );
 }

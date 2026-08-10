@@ -1,0 +1,71 @@
+.menu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: var(--hero-bg);
+    color: var(--bg-primary);
+  }
+
+  .menu[data-open='false'] {
+    display: none;
+  }
+
+  .menu[data-open='true'] {
+    animation: menuIn .42s cubic-bezier(.2, .8, .2, 1);
+  }
+}
+
+.close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: 0;
+  color: inherit;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.link {
+  font-family: var(--font-petrona), serif;
+  font-size: clamp(30px, 9vw, 42px);
+  color: inherit;
+  text-decoration: none;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.cta,
+.whatsapp {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid rgba(251, 249, 245, .5);
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+}
