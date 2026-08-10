@@ -81,13 +81,23 @@ export function Header() {
           ))}
         </nav>
         <div className={styles.actions}>
-          <Link
-            href={locale === 'pt' ? '/en' : '/'}
-            locale={locale === 'pt' ? 'en' : 'pt'}
-            className={styles.langToggle}
-          >
-            {locale === 'pt' ? 'EN' : 'PT'}
-          </Link>
+          <div id="pc-lang" className={styles.langSwitch}>
+            <Link
+              href={pathname}
+              locale="pt"
+              className={locale === 'pt' ? styles.langActive : styles.langInactive}
+            >
+              PT
+            </Link>
+            <span className={styles.langDivider}>/</span>
+            <Link
+              href={pathname}
+              locale="en"
+              className={locale === 'en' ? styles.langActive : styles.langInactive}
+            >
+              EN
+            </Link>
+          </div>
           <Link href="/reserva" className={styles.cta}>
             {t('header.cta')}
           </Link>

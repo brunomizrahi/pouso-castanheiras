@@ -6,8 +6,7 @@ import styles from './TransferOptions.module.css';
 
 // dc.html 837-889: label + h2 + note, then 3 cards (táxi, van, hidroavião — the last one
 // dark). Each card's image slot uses a real photo when one exists in public/img/, or
-// TransferPlaceholder otherwise. All 3 are still missing (README "Faltando"), so `photo`
-// is undefined for every entry today — this keeps the swap to a real photo a one-line change.
+// TransferPlaceholder otherwise.
 const COPY = {
   label: { pt: 'Modalidades de transfer', en: 'Transfer options' },
   title: { pt: 'Escolha como quer chegar', en: 'Choose how you arrive' },
@@ -29,6 +28,7 @@ const TRANSFERS: {
 }[] = [
   {
     key: 'taxi',
+    photo: '/img/transfer-taxi.jpg',
     category: { pt: 'Rodoviário', en: 'By road' },
     title: { pt: 'Táxi da cooperativa', en: 'Cooperative taxi' },
     desc: {
@@ -40,6 +40,7 @@ const TRANSFERS: {
   },
   {
     key: 'van',
+    photo: '/img/transfer-van.jpg',
     category: { pt: 'Rodoviário', en: 'By road' },
     title: { pt: 'Van executiva', en: 'Executive van' },
     desc: {
@@ -51,6 +52,7 @@ const TRANSFERS: {
   },
   {
     key: 'hidro',
+    photo: '/img/transfer-hidro.jpg',
     dark: true,
     category: { pt: 'Aéreo', en: 'By air' },
     title: { pt: 'Hidroavião', en: 'Seaplane' },

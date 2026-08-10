@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import styles from './MobileMenu.module.css';
 
 const NAV_ITEMS = [
@@ -16,6 +16,7 @@ const NAV_ITEMS = [
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const t = useTranslations();
   const locale = useLocale();
+  const pathname = usePathname();
 
   return (
     <div id="pc-menu" data-open={open} className={styles.menu} onClick={onClose}>
@@ -36,13 +37,25 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         <a href="https://wa.me/5511942995588" className={styles.whatsapp}>
           {t('header.whatsapp')}
         </a>
-        <Link
-          href={locale === 'pt' ? '/en' : '/'}
-          locale={locale === 'pt' ? 'en' : 'pt'}
-          className={styles.langToggle}
-        >
-          {locale === 'pt' ? 'EN' : 'PT'}
-        </Link>
+        <div className={styles.langSwitch}>
+          <Link
+            href={pathname}
+            locale="pt"
+            onClick={onClose}
+            className={locale === 'pt' ? styles.langActive : styles.langInactive}
+          >
+            PT
+          </Link>
+          <span className={styles.langDivider}>/</span>
+          <Link
+            href={pathname}
+            locale="en"
+            onClick={onClose}
+            className={locale === 'en' ? styles.langActive : styles.langInactive}
+          >
+            EN
+          </Link>
+        </div>
       </div>
     </div>
   );

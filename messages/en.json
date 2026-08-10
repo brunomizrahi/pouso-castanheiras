@@ -13,8 +13,14 @@
     "whatsapp": "WhatsApp"
   },
   "footer": {
-    "instagram": "Instagram",
-    "whatsapp": "WhatsApp",
-    "email": "Email"
+    "navigate": "Navigate",
+    "reservations": "Reservations",
+    "hours": "Hours",
+    "checkin": "Check-in 12pm",
+    "checkout": "Check-out 12pm",
+    "oneGroup": "One single group at a time",
+    "address": "Novo Airão, Amazonas, Brazil",
+    "coordinates": "2°37′23.9″S 60°58′53.0″W",
+    "tagline": "Amazon · Rio Negro · Anavilhanas"
   }
 }

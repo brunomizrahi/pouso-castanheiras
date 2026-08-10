@@ -111,11 +111,31 @@
   }
 }
 
-.langToggle {
+.langSwitch {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-jost), sans-serif;
   font-size: 11px;
   letter-spacing: 0.14em;
   font-weight: 400;
+}
+
+.langActive,
+.langInactive {
   color: inherit;
   text-decoration: none;
+}
+
+.langInactive {
+  opacity: 0.45;
+  transition: opacity 0.3s ease;
+}
+
+.langInactive:hover {
+  opacity: 0.75;
+}
+
+.langDivider {
+  opacity: 0.35;
 }
