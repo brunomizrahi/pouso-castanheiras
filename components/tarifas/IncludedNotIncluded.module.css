@@ -1,0 +1,48 @@
+.section {
+  background: var(--sand);
+  padding: clamp(60px, 9vh, 110px) var(--section-padding-x);
+}
+
+.grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(30px, 5vw, 72px);
+}
+
+.label {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #3d3126;
+}
+
+.item {
+  display: flex;
+  gap: 14px;
+}
+
+.bullet {
+  flex-shrink: 0;
+}
+
+.bulletIncluded {
+  color: var(--olive);
+}
+
+.bulletExcluded {
+  color: var(--text-disabled);
+}

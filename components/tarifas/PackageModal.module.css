@@ -1,0 +1,213 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 260;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(20, 16, 12, 0.6);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.4s ease both;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(620px, 100%);
+  background: var(--bg-primary);
+  overflow-y: auto;
+  animation: slideIn 0.55s cubic-bezier(0.16, 0.84, 0.28, 1) both;
+  box-shadow: -20px 0 60px rgba(20, 16, 12, 0.28);
+}
+
+.heroWrap {
+  position: relative;
+  height: clamp(220px, 30vh, 300px);
+  background: var(--sand);
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 22, 17, 0.7), rgba(26, 22, 17, 0) 62%);
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 0;
+  background: rgba(251, 249, 245, 0.92);
+  color: var(--ink);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.closeButton:hover {
+  background: var(--bg-primary);
+}
+
+.heroCaption {
+  position: absolute;
+  left: clamp(24px, 4vw, 40px);
+  bottom: 22px;
+  right: clamp(24px, 4vw, 40px);
+  color: var(--bg-primary);
+}
+
+.heroMeta {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  opacity: 0.78;
+  margin-bottom: 10px;
+}
+
+.heroTitle {
+  font-family: var(--font-petrona), serif;
+  font-weight: 300;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.08;
+  margin: 0;
+}
+
+.content {
+  padding: clamp(28px, 4vw, 40px);
+}
+
+.body {
+  margin: 0 0 30px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-on-olive);
+}
+
+.sectionLabel {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 16px;
+}
+
+.actsList {
+  border-top: 1px solid var(--sand);
+  margin-bottom: 34px;
+}
+
+.actRow {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid #efebe3;
+}
+
+.actNumber {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--number-decorative);
+  flex-shrink: 0;
+  width: 22px;
+}
+
+.actTitle {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.actDuration {
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+.priceBox {
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding: 18px 22px;
+  border-bottom: 1px solid #efebe3;
+}
+
+.priceRow:last-child {
+  border-bottom: 0;
+}
+
+.priceLabel {
+  display: block;
+  font-size: 14.5px;
+}
+
+.priceCaption {
+  display: block;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 3px;
+}
+
+.priceValue {
+  font-family: var(--font-petrona), serif;
+  font-size: 22px;
+  white-space: nowrap;
+}
+
+.footnote {
+  margin: 16px 0 0;
+  font-size: 12.5px;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+}
+
+.cta {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 32px;
+  border: 0;
+  background: var(--ink);
+  color: var(--bg-primary);
+  padding: 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.4s ease;
+}
+
+.cta:hover {
+  background: var(--olive);
+}

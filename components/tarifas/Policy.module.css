@@ -1,0 +1,134 @@
+.section {
+  padding: clamp(60px, 9vh, 110px) var(--section-padding-x);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.label {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: clamp(28px, 4vh, 44px);
+  font-weight: 400;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--sand);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.card {
+  background: #fff;
+  padding: clamp(24px, 2.4vw, 34px);
+}
+
+.cardTitle {
+  font-family: var(--font-petrona), serif;
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0 0 14px;
+}
+
+.p {
+  margin: 0 0 10px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.p:last-of-type {
+  margin-bottom: 0;
+}
+
+.footnote {
+  margin: 18px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+}
+
+.cancelList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.cancelPeriod {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 5px;
+}
+
+.pSmall {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.pSmall:last-child {
+  margin-bottom: 0;
+}
+
+.strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(32px, 5vh, 52px);
+}
+
+.primaryCta {
+  border: 0;
+  background: var(--ink);
+  color: var(--bg-primary);
+  padding: 18px 38px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.4s var(--ease-standard), background 0.4s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  background: var(--olive);
+}
+
+.secondaryCta {
+  border: 1px solid var(--border-on-light);
+  color: var(--ink);
+  padding: 18px 32px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.4s ease;
+}
+
+.secondaryCta:hover {
+  background: rgba(42, 28, 18, 0.06);
+}

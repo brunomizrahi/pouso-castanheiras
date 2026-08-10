@@ -1,0 +1,161 @@
+.section {
+  padding: 0 var(--section-padding-x) clamp(60px, 9vh, 110px);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.wrap {
+  overflow-x: auto;
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.thActivity {
+  text-align: left;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--sand);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  width: 34%;
+  vertical-align: bottom;
+}
+
+.thPkg {
+  text-align: left;
+  padding: 22px 18px;
+  border-bottom: 1px solid var(--sand);
+  border-left: 1px solid #f2efe9;
+  font-weight: 400;
+  vertical-align: bottom;
+}
+
+.thPkgHighlight {
+  background: var(--bg-alt);
+}
+
+.thMeta {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 7px;
+}
+
+.thName {
+  font-family: var(--font-petrona), serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.tdActivity {
+  padding: 15px 24px;
+  border-bottom: 1px solid #f2efe9;
+}
+
+.tdActivitySuffix {
+  color: var(--text-tertiary);
+  font-size: 12.5px;
+}
+
+.tdMark {
+  padding: 15px 18px;
+  border-bottom: 1px solid #f2efe9;
+  border-left: 1px solid #f2efe9;
+  color: var(--olive);
+}
+
+.tdMarkOff {
+  color: var(--number-decorative);
+}
+
+.tdMarkHighlight {
+  background: var(--bg-alt);
+}
+
+.rowLastActivity .tdActivity,
+.rowLastActivity .tdMark {
+  border-bottom: 1px solid var(--sand);
+}
+
+.rowSeasonFirst .tdSeasonLabel {
+  padding: 20px 24px 8px;
+}
+
+.rowSeasonFirst .tdPrice {
+  padding: 20px 18px 8px;
+}
+
+.rowSeasonMid .tdSeasonLabel {
+  padding: 12px 24px;
+}
+
+.rowSeasonMid .tdPrice {
+  padding: 12px 18px;
+}
+
+.rowSeasonLast .tdSeasonLabel {
+  padding: 12px 24px 26px;
+}
+
+.rowSeasonLast .tdPrice {
+  padding: 12px 18px 26px;
+}
+
+.tdSeasonLabel {
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.tdPrice {
+  border-left: 1px solid #f2efe9;
+  font-family: var(--font-petrona), serif;
+  font-size: 21px;
+}
+
+.tdPriceHighlight {
+  background: var(--bg-alt);
+}
+
+.tdPriceNa {
+  font-size: 17px;
+  color: #c9c2b4;
+}
+
+.perNight {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(20px, 3vw, 44px);
+  margin-top: 32px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.legendTitle {
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 5px;
+}

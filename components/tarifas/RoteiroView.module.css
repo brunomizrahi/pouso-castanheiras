@@ -1,0 +1,100 @@
+.section {
+  padding: 0 var(--section-padding-x) clamp(60px, 9vh, 110px);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: clamp(30px, 4vh, 46px);
+}
+
+.tab {
+  border: 1px solid var(--sand);
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.tabActive {
+  background: var(--olive);
+  color: var(--bg-primary);
+  border-color: var(--olive);
+}
+
+.day {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 48px);
+  padding: clamp(24px, 3vh, 38px) 0;
+  border-top: 1px solid var(--sand);
+}
+
+.dayNumber {
+  font-family: var(--font-petrona), serif;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--number-decorative);
+}
+
+.dayLabel {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+}
+
+.dayContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(16px, 2vw, 32px);
+  align-items: start;
+}
+
+.dayTitle {
+  font-family: var(--font-petrona), serif;
+  font-weight: 400;
+  font-size: clamp(19px, 1.8vw, 25px);
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+.dayBody {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: var(--text-secondary);
+}
+
+.dayImageWrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  width: 100%;
+  height: clamp(160px, 22vh, 200px);
+  background-color: var(--sand);
+}
+
+.dayImage {
+  object-fit: cover;
+}
+
+.footnote {
+  margin: 30px 0 0;
+  font-size: 12.5px;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  max-width: 620px;
+}

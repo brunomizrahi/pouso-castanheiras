@@ -1,0 +1,37 @@
+.section {
+  padding: 0 var(--section-padding-x);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: sticky;
+  top: var(--header-height);
+  z-index: 60;
+  background: linear-gradient(var(--bg-primary) 62%, rgba(251, 249, 245, 0));
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 0 22px;
+}
+
+.button {
+  border: 1px solid var(--sand);
+  background: #fff;
+  color: var(--ink);
+  padding: 11px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.buttonActive {
+  background: var(--ink);
+  color: var(--bg-primary);
+  border-color: var(--ink);
+}
