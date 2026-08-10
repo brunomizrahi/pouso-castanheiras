@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "casa": "The House",
+    "experiencias": "Experiences",
+    "chegar": "Getting Here",
+    "tarifas": "Rates",
+    "reserva": "Book",
+    "midia": "Press"
+  },
+  "header": {
+    "cta": "Book",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "email": "Email"
+  }
+}

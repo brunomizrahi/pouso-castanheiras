@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Início",
+    "casa": "A Casa",
+    "experiencias": "Experiências",
+    "chegar": "Como Chegar",
+    "tarifas": "Tarifas",
+    "reserva": "Reservar",
+    "midia": "Mídia"
+  },
+  "header": {
+    "cta": "Reservar",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "email": "E-mail"
+  }
+}
