@@ -67,7 +67,7 @@
   text-decoration: none;
   border: 1px solid rgba(251, 249, 245, .5);
   border-radius: var(--radius-pill);
-  padding: 10px 22px;
+  padding: 9px 20px;
 }
 
 .langSwitch {

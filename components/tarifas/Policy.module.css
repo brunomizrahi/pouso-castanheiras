@@ -99,7 +99,7 @@
   border: 0;
   background: var(--ink);
   color: var(--bg-primary);
-  padding: 18px 38px;
+  padding: 13px 32px;
   border-radius: var(--radius-pill);
   font-family: var(--font-jost), sans-serif;
   font-size: 11.5px;
@@ -118,7 +118,7 @@
 .secondaryCta {
   border: 1px solid var(--border-on-light);
   color: var(--ink);
-  padding: 18px 32px;
+  padding: 13px 28px;
   border-radius: var(--radius-pill);
   font-family: var(--font-jost), sans-serif;
   font-size: 11.5px;

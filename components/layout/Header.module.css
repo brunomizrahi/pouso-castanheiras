@@ -75,7 +75,7 @@
   color: inherit;
   border: 1px solid currentColor;
   border-radius: var(--radius-pill);
-  padding: 10px 22px;
+  padding: 9px 20px;
   transition: transform .4s var(--ease-standard);
 }
 

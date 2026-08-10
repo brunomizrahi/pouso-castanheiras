@@ -174,7 +174,7 @@
   align-self: flex-start;
   background: var(--ink);
   color: var(--bg-primary);
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: var(--radius-pill);
   font-family: var(--font-jost), sans-serif;
   font-size: 11px;

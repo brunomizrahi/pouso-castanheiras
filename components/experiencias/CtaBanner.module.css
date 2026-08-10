@@ -37,7 +37,7 @@
   border: 0;
   background: var(--ink);
   color: var(--bg-primary);
-  padding: 17px 34px;
+  padding: 13px 30px;
   border-radius: var(--radius-pill);
   font-family: var(--font-jost), sans-serif;
   font-size: 11.5px;
@@ -56,7 +56,7 @@
   border: 1px solid var(--border-on-light);
   background: none;
   color: var(--ink);
-  padding: 17px 30px;
+  padding: 13px 26px;
   border-radius: var(--radius-pill);
   font-family: var(--font-jost), sans-serif;
   font-size: 11.5px;
