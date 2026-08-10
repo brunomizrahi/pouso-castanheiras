@@ -1,0 +1,127 @@
+.section {
+  padding: 0 var(--section-padding-x) clamp(60px, 9vh, 120px);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.label {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--olive);
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--sand);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(12px, 1.4vw, 20px);
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.5s var(--ease-standard), box-shadow 0.5s ease, border-color 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(42, 28, 18, 0.12);
+  border-color: var(--number-decorative);
+}
+
+.imageWrap {
+  display: block;
+  position: relative;
+  height: 175px;
+  overflow: hidden;
+  background: var(--sand-dark);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(251, 249, 245, 0.94);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  flex: 1;
+  padding: clamp(22px, 2.2vw, 30px);
+}
+
+.title {
+  display: block;
+  font-family: var(--font-petrona), serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.28;
+  margin-bottom: 14px;
+}
+
+.quote {
+  display: block;
+  font-family: var(--font-petrona), serif;
+  font-style: italic;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.read {
+  color: var(--olive);
+}
+
+.note {
+  margin: 30px 0 0;
+  font-size: 12.5px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+}
