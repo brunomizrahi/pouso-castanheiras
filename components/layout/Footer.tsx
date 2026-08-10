@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import styles from './Footer.module.css';
 
@@ -5,7 +6,13 @@ export function Footer() {
   const t = useTranslations();
   return (
     <footer className={styles.footer}>
-      <div className={styles.brand}>Pouso das Castanheiras</div>
+      <Image
+        src="/img/logo-full-light.png"
+        alt="Pouso das Castanheiras"
+        width={168}
+        height={99}
+        className={styles.brand}
+      />
       <nav className={styles.links}>
         <a href="https://instagram.com/pouso.das.castanheiras" target="_blank" rel="noreferrer">
           {t('footer.instagram')}

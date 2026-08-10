@@ -10,9 +10,10 @@
 }
 
 .brand {
-  font-family: var(--font-petrona), serif;
-  font-size: clamp(24px, 3vw, 34px);
-  color: var(--bg-primary);
+  width: 168px;
+  height: auto;
+  display: block;
+  margin-bottom: 0;
 }
 
 .links {

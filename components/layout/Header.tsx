@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { computeHeaderAppearance } from '@/lib/headerAppearance';
@@ -49,7 +50,20 @@ export function Header() {
         }}
       >
         <Link href="/" className={styles.brand}>
-          Pouso das Castanheiras
+          <Image
+            id="pc-mark"
+            src="/img/mark.png"
+            alt=""
+            width={21}
+            height={34}
+            className={styles.mark}
+            style={{ filter: appearance.dark ? 'brightness(0) invert(1)' : 'none' }}
+          />
+          <span className={styles.wordmark}>
+            Pouso das
+            <br />
+            Castanheiras
+          </span>
         </Link>
         <nav id="pc-nav" className={styles.nav}>
           {NAV_ITEMS.map((item) => (
@@ -67,7 +81,11 @@ export function Header() {
           ))}
         </nav>
         <div className={styles.actions}>
-          <Link href={locale === 'pt' ? '/en' : '/'} locale={locale === 'pt' ? 'en' : 'pt'}>
+          <Link
+            href={locale === 'pt' ? '/en' : '/'}
+            locale={locale === 'pt' ? 'en' : 'pt'}
+            className={styles.langToggle}
+          >
             {locale === 'pt' ? 'EN' : 'PT'}
           </Link>
           <Link href="/reserva" className={styles.cta}>

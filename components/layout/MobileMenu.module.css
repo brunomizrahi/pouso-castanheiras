@@ -69,3 +69,12 @@
   border-radius: var(--radius-pill);
   padding: 10px 22px;
 }
+
+.langToggle {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: inherit;
+  text-decoration: none;
+  margin-left: auto;
+}

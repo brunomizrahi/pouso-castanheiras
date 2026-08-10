@@ -36,7 +36,11 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         <a href="https://wa.me/5511942995588" className={styles.whatsapp}>
           {t('header.whatsapp')}
         </a>
-        <Link href={locale === 'pt' ? '/en' : '/'} locale={locale === 'pt' ? 'en' : 'pt'}>
+        <Link
+          href={locale === 'pt' ? '/en' : '/'}
+          locale={locale === 'pt' ? 'en' : 'pt'}
+          className={styles.langToggle}
+        >
           {locale === 'pt' ? 'EN' : 'PT'}
         </Link>
       </div>
