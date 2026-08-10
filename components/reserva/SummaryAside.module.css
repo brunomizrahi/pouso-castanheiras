@@ -1,0 +1,167 @@
+.aside {
+  position: sticky;
+  top: 100px;
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.top {
+  padding: clamp(22px, 2.4vw, 30px);
+  border-bottom: 1px solid var(--sand);
+}
+
+.label {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+
+.dates {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+}
+
+.dateCol {
+  flex: 1;
+  padding-right: 16px;
+  border-right: 1px solid var(--bg-neutral);
+}
+
+.dateColRight {
+  padding-right: 0;
+  padding-left: 16px;
+  border-right: 0;
+}
+
+.dateLabel {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-disabled);
+  margin-bottom: 7px;
+}
+
+.dateValue {
+  font-family: var(--font-petrona), serif;
+  font-size: 19px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rowLabel {
+  color: var(--text-tertiary);
+}
+
+.rowValueRight {
+  text-align: right;
+}
+
+.priceBox {
+  padding: clamp(22px, 2.4vw, 30px);
+  background: var(--bg-alt);
+}
+
+.priceLabel {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.price {
+  font-family: var(--font-petrona), serif;
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+.priceNote {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-tertiary);
+}
+
+.messageBox {
+  padding: clamp(22px, 2.4vw, 30px);
+}
+
+.messageLabel {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-disabled);
+  margin-bottom: 12px;
+}
+
+.pre {
+  margin: 0 0 22px;
+  font-family: var(--font-jost), sans-serif;
+  font-weight: 300;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  background: var(--bg-neutral);
+  padding: 16px;
+  border-radius: 3px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.cta {
+  display: block;
+  text-align: center;
+  background: var(--ink);
+  color: var(--bg-primary);
+  padding: 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-jost), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.4s ease;
+}
+
+.cta:hover {
+  background: var(--olive);
+  color: var(--bg-primary);
+}
+
+.footnote {
+  margin: 16px 0 0;
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--text-disabled);
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .aside {
+    position: static;
+  }
+}
