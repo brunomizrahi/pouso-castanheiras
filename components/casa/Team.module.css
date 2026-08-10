@@ -1,0 +1,72 @@
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(30px, 5vw, 80px);
+  align-items: center;
+}
+
+.label {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.title {
+  font-family: var(--font-petrona), serif;
+  font-weight: 300;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.14;
+  letter-spacing: -0.018em;
+  margin: 0 0 26px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 500px;
+}
+
+.copy p {
+  margin: 0;
+}
+
+.p2 {
+  border-top: 1px solid var(--sand);
+  padding-top: 20px;
+}
+
+.strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--grid-gap);
+}
+
+.photoCell {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  height: clamp(240px, 34vh, 360px);
+}
+
+.photo {
+  object-fit: cover;
+}

@@ -1,0 +1,67 @@
+.hero {
+  position: relative;
+  height: clamp(460px, 74vh, 760px);
+  overflow: hidden;
+  background: var(--hero-bg);
+}
+
+.image {
+  object-fit: cover;
+  animation: kb 26s ease-out forwards;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(26, 22, 17, 0.62) 0%, rgba(26, 22, 17, 0.46) 38%, rgba(26, 22, 17, 0.84) 100%);
+}
+
+.content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--section-padding-x) clamp(48px, 7vh, 76px);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.inner {
+  animation: fadeUp 1.3s 0.2s ease both;
+}
+
+.eyebrow {
+  font-family: var(--font-jost), sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bg-primary);
+  text-shadow: 0 1px 14px rgba(26, 22, 17, 0.9);
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.title {
+  font-family: var(--font-petrona), serif;
+  font-weight: 300;
+  font-size: clamp(38px, 5.8vw, 86px);
+  line-height: 1;
+  letter-spacing: -0.022em;
+  color: var(--bg-primary);
+  margin: 0 0 24px;
+  max-width: 900px;
+}
+
+.title em {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.body {
+  margin: 0;
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.7;
+  color: var(--on-dark-82);
+  max-width: 560px;
+}
