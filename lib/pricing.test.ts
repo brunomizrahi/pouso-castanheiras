@@ -7,6 +7,11 @@ describe('quotePrice', () => {
     expect(result).toEqual({ price: 'A definir', note: 'Selecione um período e um pacote.' });
   });
 
+  it('returns a placeholder when no package is selected yet, even if a season is known', () => {
+    const result = quotePrice({ packageIndex: null, season: 'low', nights: 3, locale: 'pt' });
+    expect(result).toEqual({ price: 'A definir', note: 'Selecione um período e um pacote.' });
+  });
+
   it('flags Rio Negro as unavailable in the special season (its special price is null)', () => {
     const result = quotePrice({ packageIndex: 0, season: 'special', nights: 3, locale: 'pt' });
     expect(result.price).toBe('Sob consulta');

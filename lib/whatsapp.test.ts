@@ -62,6 +62,27 @@ describe('buildWhatsAppMessage', () => {
     expect(message).not.toContain('Temporada:');
   });
 
+  it('shows "a definir" for the package line when no package is selected yet', () => {
+    const message = buildWhatsAppMessage({
+      locale: 'pt',
+      checkIn: null,
+      checkOut: null,
+      nights: 0,
+      packageName: null,
+      packageMeta: '',
+      season: null,
+      price: 'A definir',
+      guestName: '',
+      guestEmail: '',
+      guestPhone: '',
+      pax: '4',
+      transfer: 'depois',
+      notes: '',
+    });
+
+    expect(message).toContain('Pacote: a definir');
+  });
+
   it('appends an "Observações" block when notes are present', () => {
     const message = buildWhatsAppMessage({
       locale: 'pt',

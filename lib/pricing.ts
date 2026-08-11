@@ -9,7 +9,7 @@ export interface PriceQuote {
 }
 
 export function quotePrice(params: {
-  packageIndex: number;
+  packageIndex: number | null;
   season: Season | null;
   nights: number;
   locale: Locale;
@@ -18,7 +18,7 @@ export function quotePrice(params: {
   const EN = locale === 'en';
   const L = (pt: string, en: string) => (EN ? en : pt);
 
-  if (!season) {
+  if (!season || packageIndex === null) {
     return {
       price: L('A definir', 'To be defined'),
       note: L('Selecione um período e um pacote.', 'Select a date range and a package.'),

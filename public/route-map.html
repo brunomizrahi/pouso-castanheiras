@@ -72,16 +72,29 @@
   var PLANE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-6-6 20-3.5-8.5L2 12Z"/><path d="M3 20h18"/></svg>';
   var BOAT = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h18l-2.5 5H5.5L3 15Z"/><path d="M6 15V9h12v6"/><path d="M12 9V4"/></svg>';
 
+  // Below ~640px the corridor is too narrow for the floating duration chips and the two-line
+  // pin labels to clear each other (they use fixed pixel offsets, not zoom-relative ones) —
+  // the "As etapas" cards right under the map already repeat every duration in readable text,
+  // so on narrow screens we drop the chips and shorten the pins to their bold title only.
+  var isNarrow = window.innerWidth < 640;
+
   // The boat leg is only ~4 km: at corridor zoom its chip cannot clear the Novo Airão
   // and Pouso pins, so it lives in the legend under the map instead.
-  seg([-2.5480, -60.2400], 'road', CAR, '2h45 · Táxi ou van');
-  seg([-2.8600, -60.5600], 'air', PLANE, '40 min · Hidroavião');
+  if (!isNarrow) {
+    seg([-2.5480, -60.2400], 'road', CAR, '2h45 · Táxi ou van');
+    seg([-2.8600, -60.5600], 'air', PLANE, '40 min · Hidroavião');
+  }
 
-  pin(MANAUS, '<b>Manaus</b>Aeroporto Eduardo Gomes', false, 'left', [-12, 0]);
-  pin(AIRAO,  '<b>Novo Airão</b>Porto', false, 'bottom', [6, 16]);
-  pin(POUSO,  '<b>Pouso das Castanheiras</b>2°37\'23.9"S 60°58\'53.0"W', true, 'left', [-18, -6]);
+  pin(MANAUS, isNarrow ? '<b>Manaus</b>' : '<b>Manaus</b>Aeroporto Eduardo Gomes', false, isNarrow ? 'top' : 'left', isNarrow ? [0, -10] : [-12, 0]);
+  pin(AIRAO,  isNarrow ? '<b>Novo Airão</b>' : '<b>Novo Airão</b>Porto', false, 'bottom', [6, 16]);
+  pin(POUSO,  isNarrow ? '<b>Pouso das Castanheiras</b>' : '<b>Pouso das Castanheiras</b>2°37\'23.9"S 60°58\'53.0"W', true, isNarrow ? 'right' : 'left', isNarrow ? [18, -6] : [-18, -6]);
 
-  map.fitBounds(L.latLngBounds(road.concat([POUSO])), { paddingTopLeft: [190, 60], paddingBottomRight: [80, 70] });
+  map.fitBounds(
+    L.latLngBounds(road.concat([POUSO])),
+    isNarrow
+      ? { paddingTopLeft: [45, 50], paddingBottomRight: [20, 40] }
+      : { paddingTopLeft: [190, 60], paddingBottomRight: [80, 70] }
+  );
 </script>
 </body>
 </html>

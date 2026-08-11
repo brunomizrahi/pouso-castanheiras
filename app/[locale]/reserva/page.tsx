@@ -29,13 +29,14 @@ const LABELS = {
     pt: 'Escolha o período e o pacote. No final deixamos a mensagem pronta para você mandar no WhatsApp, e respondemos em poucas horas com a disponibilidade.',
     en: 'Choose your dates and your package. At the end we leave the message ready for you to send on WhatsApp, and we reply within a few hours with availability.',
   },
+  selectPackage: { pt: 'Selecione', en: 'Select' },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export default function ReservaPage() {
   const locale = useLocale() as Locale;
   const [range, setRange] = useState<DateRange>({ checkIn: null, checkOut: null });
   const [monthOffset, setMonthOffset] = useState(0);
-  const [pkgSel, setPkgSel] = useState(2);
+  const [pkgSel, setPkgSel] = useState<number | null>(null);
   const [transfer, setTransfer] = useState<TransferKey>('depois');
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
@@ -53,7 +54,7 @@ export default function ReservaPage() {
       ? Math.round((fromIso(range.checkOut).getTime() - fromIso(range.checkIn).getTime()) / 86400000)
       : 0;
   const currentSeason = range.checkIn ? season(range.checkIn) : null;
-  const pkg = PACKAGES[pkgSel];
+  const pkg = pkgSel !== null ? PACKAGES[pkgSel] : null;
   const { price, note } = quotePrice({ packageIndex: pkgSel, season: currentSeason, nights, locale });
 
   const message = buildWhatsAppMessage({
@@ -61,8 +62,8 @@ export default function ReservaPage() {
     checkIn: range.checkIn,
     checkOut: range.checkOut,
     nights,
-    packageName: pkg.name[locale],
-    packageMeta: pkg.meta[locale],
+    packageName: pkg ? pkg.name[locale] : null,
+    packageMeta: pkg ? pkg.meta[locale] : '',
     season: currentSeason,
     price,
     guestName: nome,
@@ -116,7 +117,7 @@ export default function ReservaPage() {
             checkIn={range.checkIn}
             checkOut={range.checkOut}
             nights={nights}
-            packageName={pkg.name[locale]}
+            packageName={pkg ? pkg.name[locale] : LABELS.selectPackage[locale]}
             season={currentSeason}
             pax={pax}
             transfer={transfer}

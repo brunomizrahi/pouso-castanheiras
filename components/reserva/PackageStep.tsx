@@ -19,7 +19,7 @@ const NIGHTS_META: Record<Locale, string>[] = [
 ];
 
 interface PackageStepProps {
-  selected: number;
+  selected: number | null;
   onSelect: (index: number) => void;
 }
 

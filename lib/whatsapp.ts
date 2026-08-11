@@ -18,7 +18,7 @@ export interface WhatsAppMessageParams {
   checkIn: string | null;
   checkOut: string | null;
   nights: number;
-  packageName: string;
+  packageName: string | null;
   packageMeta: string;
   season: Season | null;
   price: string;
@@ -57,7 +57,10 @@ export function buildWhatsAppMessage(p: WhatsAppMessageParams): string {
         : L('a definir', 'to be defined'))
   );
 
-  lines.push(L('Pacote: ', 'Package: ') + p.packageName + ', ' + stripPackageMeta(p.packageMeta));
+  lines.push(
+    L('Pacote: ', 'Package: ') +
+      (p.packageName ? p.packageName + ', ' + stripPackageMeta(p.packageMeta) : L('a definir', 'to be defined'))
+  );
 
   if (p.season) {
     lines.push(
