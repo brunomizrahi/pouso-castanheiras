@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+model StaffUser {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  totpSecretEnc String?
+  totpEnabledAt DateTime?
+  createdAt     DateTime  @default(now())
+
+  reservations Reservation[]
+}
+
+model LoginAttempt {
+  id        String   @id @default(uuid())
+  email     String
+  createdAt DateTime @default(now())
+
+  @@index([email, createdAt])
+}
+
+model Package {
+  id           String   @id @default(uuid())
+  slug         String   @unique
+  name         String
+  description  String
+  nights       Int?
+  priceLow     Decimal  @db.Decimal(10, 2)
+  priceHigh    Decimal  @db.Decimal(10, 2)
+  priceSpecial Decimal? @db.Decimal(10, 2)
+  active       Boolean  @default(true)
+  updatedAt    DateTime @updatedAt
+
+  reservations Reservation[]
+}
+
+enum ReservationSource {
+  site
+  manual
+}
+
+enum PaymentStatus {
+  aguardando_sinal
+  aguardando_pagamento
+  pago
+}
+
+enum TransferStatus {
+  organizado
+  pendente
+}
+
+model Reservation {
+  id                  String            @id @default(uuid())
+  source              ReservationSource
+  status              PaymentStatus
+  checkIn             DateTime          @db.Date
+  checkOut            DateTime          @db.Date
+  guestName           String
+  guestEmail          String?
+  guestPhone          String
+  packageId           String
+  package             Package           @relation(fields: [packageId], references: [id])
+  pax                 Int
+  notes               String?
+  totalValue          Decimal           @db.Decimal(10, 2)
+  transferStatus      TransferStatus
+  transferProvider    String?
+  transferScheduledAt DateTime?
+  transferNotes       String?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  deletedAt           DateTime?
+  createdByUserId     String?
+  createdByUser       StaffUser?        @relation(fields: [createdByUserId], references: [id])
+}
