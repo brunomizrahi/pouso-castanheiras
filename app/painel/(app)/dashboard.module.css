@@ -1,0 +1,58 @@
+.cards {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.card {
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  background: #fff;
+  min-width: 200px;
+}
+
+.cardLabel {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 8px;
+}
+
+.cardValue {
+  font-family: var(--font-petrona), serif;
+  font-size: 28px;
+}
+
+.sectionTitle {
+  font-family: var(--font-petrona), serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--sand);
+  font-size: 14px;
+}
+
+.table th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+
+.empty {
+  color: var(--text-tertiary);
+  font-size: 14px;
+  padding: 16px 0;
+}
