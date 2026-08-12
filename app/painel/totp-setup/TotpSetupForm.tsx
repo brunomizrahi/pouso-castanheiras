@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import styles from '../login/login.module.css';
 
 export function TotpSetupForm() {
-  const router = useRouter();
+  const { update } = useSession();
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string | null>(null);
   const [code, setCode] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -34,8 +34,20 @@ export function TotpSetupForm() {
       setError('Código incorreto. Confira o app autenticador e tente de novo.');
       return;
     }
-    router.push('/painel');
-    router.refresh();
+    // Calling update() with no argument issues a plain GET re-fetch of the
+    // session, which does not carry an update trigger and so does not
+    // re-run the jwt callback. Passing a body (even empty) makes next-auth
+    // POST to /api/auth/session, which triggers `jwt({ trigger: 'update' })`
+    // and refreshes the `totpEnabled` claim now that setup is confirmed.
+    await update({});
+    // Deliberately a full navigation instead of router.push(): in this
+    // exact flow (immediately after an explicit session update()),
+    // router.push() reliably fails to issue any navigation request at all,
+    // leaving the user stuck on this page even though setup succeeded. A
+    // hard navigation guarantees the middleware re-evaluates with the
+    // freshly-issued session cookie from update() above.
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    window.location.href = '/painel';
   }
 
   return (

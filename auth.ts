@@ -59,8 +59,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user) token.totpEnabled = (user as { totpEnabled: boolean }).totpEnabled;
+      if (trigger === 'update' && token.sub) {
+        const dbUser = await prisma.staffUser.findUnique({ where: { id: token.sub } });
+        token.totpEnabled = Boolean(dbUser?.totpEnabledAt && dbUser?.totpSecretEnc);
+      }
       return token;
     },
     async session({ session, token }) {
