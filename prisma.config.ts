@@ -6,6 +6,10 @@ import { defineConfig } from "prisma/config";
 // This project keeps secrets in .env.local (already gitignored), not .env.
 config({ path: ".env.local" });
 
+if (!process.env["DATABASE_URL"]) {
+  throw new Error("DATABASE_URL is not set (expected in .env.local)");
+}
+
 export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
