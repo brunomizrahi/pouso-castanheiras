@@ -7,8 +7,19 @@ function toDateInputValue(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
 
+// Unlike a bare "date" input, `<input type="datetime-local">` has a real
+// time-of-day component (when the transfer was actually agreed to run) and
+// its value has no timezone/offset suffix, so the browser both submits and
+// re-displays it as a plain *local* wall-clock string. `new Date(...)`
+// therefore parses a submitted "2026-12-10T14:30" as 14:30 local time — but
+// `toISOString()` converts back to UTC, so re-displaying it with
+// `.toISOString().slice(0, 16)` showed a time shifted by the server's UTC
+// offset (3 hours later for Brazil) every time this page was opened, and
+// re-saving without touching the field would drift it further each time.
 function toDateTimeInputValue(date: Date | null): string {
-  return date ? date.toISOString().slice(0, 16) : '';
+  if (!date) return '';
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
 export default async function EditarReservaPage({ params }: { params: Promise<{ id: string }> }) {

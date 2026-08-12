@@ -8,12 +8,20 @@ function formatBRL(value: number): string {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+function todayAsLocalIsoDate(d: Date): string {
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+
 export function ProvisioningPanel({ reservations }: { reservations: ReservationForFinance[] }) {
   const [mode, setMode] = useState<'month' | 'day'>('month');
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth() + 1);
-  const [day, setDay] = useState(today.toISOString().slice(0, 10));
+  // Match `year`/`month` above: the browser's *local* today, not
+  // toISOString()'s UTC today, which is already tomorrow from the evening
+  // onward in timezones behind UTC (e.g. Brazil) and would silently default
+  // the "por dia específico" picker to the wrong day.
+  const [day, setDay] = useState(todayAsLocalIsoDate(today));
   const [, startTransition] = useTransition();
 
   const summary = calculateProvisioning(

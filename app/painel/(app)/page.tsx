@@ -6,14 +6,26 @@ function formatBRL(value: number): string {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+// Reservation check-in/check-out are date-only concepts stored as UTC
+// midnight (e.g. an <input type="date"> value of "2026-07-18" is parsed by
+// `new Date(...)` as 2026-07-18T00:00:00.000Z). Formatting with the default,
+// server-local timezone (as plain toLocaleDateString('pt-BR') does) shifts
+// the displayed day back by one whenever the server runs behind UTC — true
+// for Brazil. Pinning the formatter to UTC keeps the displayed day the same
+// as the day that was actually typed into the form.
 function formatDate(date: Date): string {
-  return date.toLocaleDateString('pt-BR');
+  return date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 }
 
 export default async function DashboardPage() {
   const now = new Date();
-  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-  const startOfNextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+  // "This month" is the staff member's local calendar month. Reservation
+  // checkIn values are stored as UTC-midnight-encoded calendar days (see
+  // formatDate above), so the boundaries must be built the same way —
+  // otherwise a check-in on the 1st can fall a few hours on the wrong side
+  // of `startOfMonth` and get miscounted into the previous month.
+  const startOfMonth = new Date(Date.UTC(now.getFullYear(), now.getMonth(), 1));
+  const startOfNextMonth = new Date(Date.UTC(now.getFullYear(), now.getMonth() + 1, 1));
 
   const [reservationsThisMonth, allActive] = await Promise.all([
     prisma.reservation.count({

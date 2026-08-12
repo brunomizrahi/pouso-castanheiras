@@ -7,8 +7,11 @@ function formatBRL(value: number): string {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+// See app/painel/(app)/page.tsx's formatDate for why this must be pinned to
+// UTC: check-in dates are stored as UTC midnight, and the default (server
+// local) timezone would display the wrong day for a Brazil-based deployment.
 function formatDate(date: Date): string {
-  return date.toLocaleDateString('pt-BR');
+  return date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 }
 
 export default async function FinanceiroPage() {
