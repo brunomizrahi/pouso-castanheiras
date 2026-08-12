@@ -22,21 +22,32 @@ export function LoginForm() {
     const result = await signIn('credentials', {
       email,
       password,
-      totpCode: step === 'totp' ? totpCode : undefined,
+      // NOTE: next-auth's signIn() serializes the credentials object as form
+      // data, and a JS `undefined` value becomes the literal string
+      // "undefined" on the wire. Passing that through as totpCode made the
+      // server-side `!totpCode` check treat it as present, so every
+      // password-only submit for a 2FA-enabled account was verified as an
+      // (invalid) TOTP code instead of triggering the TOTP_REQUIRED step.
+      // An empty string serializes safely and is still falsy server-side.
+      totpCode: step === 'totp' ? totpCode : '',
       redirect: false,
     });
 
     setSubmitting(false);
 
-    if (result?.error === 'TOTP_REQUIRED') {
+    // NextAuth only ever puts the raw error message in `result.error` for a
+    // small allowlist of built-in error types (our thrown errors surface as
+    // the generic "CredentialsSignin"); our own custom cases are carried in
+    // `result.code` instead (see the CredentialsSignin subclasses in auth.ts).
+    if (result?.code === 'TOTP_REQUIRED') {
       setStep('totp');
       return;
     }
-    if (result?.error === 'TOTP_INVALID') {
+    if (result?.code === 'TOTP_INVALID') {
       setError('Código incorreto. Tente novamente.');
       return;
     }
-    if (result?.error === 'RATE_LIMITED') {
+    if (result?.code === 'RATE_LIMITED') {
       setError('Muitas tentativas. Aguarde 15 minutos e tente de novo.');
       return;
     }
