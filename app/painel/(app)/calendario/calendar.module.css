@@ -1,0 +1,75 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.navButton {
+  border: 1px solid var(--sand);
+  background: #fff;
+  border-radius: var(--radius-pill);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.monthLabel {
+  font-family: var(--font-petrona), serif;
+  font-size: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  padding: 6px 0;
+}
+
+.day {
+  min-height: 64px;
+  border-radius: 3px;
+  border: 1px solid #eee;
+  padding: 6px;
+  font-size: 13px;
+}
+
+.dayEmpty {
+  border: 0;
+}
+
+.dayPago {
+  border-left: 4px solid #2f6d4f;
+  background: #f7faf8;
+}
+
+.dayAguardandoSinal {
+  border-left: 4px solid #e0a53a;
+  background: #fdf8f0;
+}
+
+.dayAguardandoPagamento {
+  border-left: 4px solid #c0392b;
+  background: #fdf3f2;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 12px;
+}
+
+.legendSwatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 6px;
+}
