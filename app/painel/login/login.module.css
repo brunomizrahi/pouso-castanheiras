@@ -1,0 +1,65 @@
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  padding: 32px;
+  background: #fff;
+}
+
+.title {
+  font-family: var(--font-petrona), serif;
+  font-size: 24px;
+  margin: 0 0 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.field input {
+  padding: 10px 12px;
+  border: 1px solid var(--sand);
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.submit {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--bg-primary);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
