@@ -1,0 +1,8 @@
+:global(.painel) {
+  --panel-bg: var(--bg-primary);
+  --panel-ink: var(--ink);
+  --panel-border: var(--sand);
+  color: var(--panel-ink);
+  background: var(--panel-bg);
+  min-height: 100vh;
+}
