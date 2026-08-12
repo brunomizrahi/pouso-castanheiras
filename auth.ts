@@ -64,6 +64,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token;
     },
     async session({ session, token }) {
+      if (session.user) session.user.id = token.sub as string;
       (session as typeof session & { totpEnabled: boolean }).totpEnabled = token.totpEnabled as boolean;
       return session;
     },
