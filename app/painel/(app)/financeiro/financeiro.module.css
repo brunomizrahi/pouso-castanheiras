@@ -1,0 +1,48 @@
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-family: var(--font-petrona), serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.total {
+  font-family: var(--font-petrona), serif;
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--sand);
+  font-size: 14px;
+}
+
+.periodControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.periodControls select,
+.periodControls input {
+  padding: 8px 10px;
+  border: 1px solid var(--sand);
+  border-radius: 4px;
+}
+
+.breakdown {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+}
